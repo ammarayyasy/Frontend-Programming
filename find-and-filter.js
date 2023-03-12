@@ -16,7 +16,7 @@
 //coba find
 const cobaFind = (nama) => { 
     return users.find(function (user) {
-        return user.name == nama
+        return user.name = nama
     })
 }
 //coba filter

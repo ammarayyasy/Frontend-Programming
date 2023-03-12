@@ -45,7 +45,7 @@ const findByName = (name) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const find = users.find(function (user) {
-                return user.name = name;
+                return user.name === name;
             })
             resolve(find)
         }, 2000);
@@ -70,7 +70,7 @@ const filterByMajor = (major) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const filter = users.filter(function (user) {
-                return user.major = major
+                return user.major === major
             })
             resolve(filter)
         }, 4000);
