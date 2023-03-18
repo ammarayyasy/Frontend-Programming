@@ -1,6 +1,6 @@
 function Footer() {
     return (
-        <div>
+        <div class="footer">
             <hr/>
             <footer>
                 <h2>Copyright @ammarayyasy</h2>
