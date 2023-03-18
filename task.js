@@ -20,13 +20,13 @@ const users = [{
     major: "Sistem Informasi"
   },
   {
-    name: "Yudiansyah",
-    age: 20,
+    name: "Ammar Ayyasy",
+    age: 19,
     major: "Teknik Informatika"
   },
   {
-    name: "Irfan Hakim",
-    age: 22,
+    name: "Ghilbran Khatami",
+    age: 69,
     major: "Sistem Informasi"
   },
 ];
@@ -51,7 +51,7 @@ const all = () => {
  */
 const store = (user) => {
   users.push(user);
-  console.log(users);
+  all();
 }
 
 /**
@@ -62,7 +62,7 @@ const store = (user) => {
  */
 const update = (index, user) => {
   users[index] = user;
-  console.log(users);
+  all();
 }
 
 /**
@@ -74,7 +74,7 @@ const update = (index, user) => {
 // function destroy(index) {}
 const destroy = (index) => {
   users.splice(index, 1);
-  console.log(users);
+  all();
 }
 
 /**
