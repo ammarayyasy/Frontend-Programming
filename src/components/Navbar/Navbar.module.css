@@ -17,6 +17,11 @@
   margin-bottom: 1rem;
 }
 
+.navbar__a {
+  text-decoration: none;
+  color: #fff;
+}
+
 /* medium sreen */
 @media (min-width: 768px) {
   .navbar {

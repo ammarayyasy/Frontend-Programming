@@ -37,6 +37,13 @@ function AddMovieForm(props) {
     isPosterError: false
   });
 
+  function handleError(input, boolean) {
+    setFormErrors({
+      ...formErrors,
+      [input]: boolean,
+    })
+  }
+
   // destructing data
   const {title, year, type, poster} = formData;
   const {isTitleError, isYearError, isTypeError, isPosterError} = formErrors;
@@ -44,28 +51,21 @@ function AddMovieForm(props) {
   function validate(){
     // Jika title kosong, set isTitleError true
     if (title === "") {
-      setFormErrors({...formErrors, isTitleError: true});
-      return false;
+      handleError("isTitleError", "true");
     }
     // Jika year kosong, set isYearError true
     else if (year === "") {
-      setFormErrors({...formErrors, isYearError: true});
-      return false;
+      handleError("isYearError", "true");
     }
     // Jika year kosong, set isYearError true
     else if (type === "") {
-      setFormErrors({...formErrors, isTypeError: true});
-      return false;
+      handleError("isTypeError", "true");
     }
     // Jika year kosong, set isYearError true
     else if (poster === "") {
-      setFormErrors({...formErrors, isPosterError: true});
+      handleError("isPosterError", "true");
     }
     else {
-      setFormErrors({...formErrors, isTitleError: false});
-      setFormErrors({...formErrors, isYearError: false});
-      setFormErrors({...formErrors, isTypeError: false});
-      setFormErrors({...formErrors, isPosterError: false});
       return true;
     }
   }
