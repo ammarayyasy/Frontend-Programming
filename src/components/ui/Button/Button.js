@@ -28,6 +28,22 @@ const Button = styled.button`
             return props.theme.size["md"];
         }
     }};
+
+    ${(props) => {
+        if (props.mb) {
+            return `margin-bottom: ${props.theme.margin[props.mb]}`;
+        } else {
+            return `margin-bottom: ${props.theme.margin["1"]}`;
+        }
+    }};
+
+    ${(props) => {
+        if (props.mt) {
+            return `margin-top: ${props.theme.margin[props.mt]}`;
+        } else {
+            return `margin-top: ${props.theme.margin["1"]}`;
+        }
+    }};
 `;
 
 export default Button;

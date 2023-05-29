@@ -1,5 +1,6 @@
 import Movie from "../Movie/Movie";
 import Button from "../ui/Button/Button";
+import Heading from "../ui/Heading/Heading";
 import styles from "./Movies.module.css";
 
 import { nanoid } from "nanoid";
@@ -23,7 +24,7 @@ function Movies(props) {
   return (
     <div className={styles.container}>
       <section className={styles.movies}>
-        <h2 className={styles.movies__title}>Latest Movies</h2>
+        <Heading size="md" color="webku" mb="2">Latest Movies</Heading>
         <div className={styles.movie__container}>
           {movies.map((movie) => {
             return <Movie key={movie.id} movie={movie} />;

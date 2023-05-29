@@ -2,6 +2,9 @@
 import { useEffect, useState } from "react";
 import Button from "../ui/Button/Button";
 import HeroStyled from "./Hero.styled";
+import Heading from "../ui/Heading/Heading";
+import Paragraph from "../ui/Paragraph/Paragraph";
+import Image from "../ui/Image/Image";
 
 function Hero() {
   // membuat state movie
@@ -27,16 +30,13 @@ function Hero() {
     <HeroStyled>
       <section>
         <div className="hero__left">
-          <h2>{movie.Title}</h2>
-          <h3>Genre: {movie.Genre}</h3>
-          <p>{movie.Plot}</p>
+          <Heading size="md" color="webku" mb="2">{movie.Title}</Heading>
+          <Heading color="info">Genre: {movie.Genre}</Heading>
+          <Paragraph color="webku" mb="2">{movie.Plot}</Paragraph>
           <Button variant="webku" size="lg">Watch</Button>
         </div>
         <div className="hero__right">
-          <img
-            src="https://picsum.photos/536/354"
-            alt={movie.Title}
-          />
+          <Image src="https://picsum.photos/536/354" alt={movie.Title}/>
         </div>
       </section>
     </HeroStyled>

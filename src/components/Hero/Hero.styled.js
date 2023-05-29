@@ -14,29 +14,6 @@ const HeroStyled = styled.div`
         margin-bottom: 1rem;
     }
 
-    h2 {
-        color: #086375;
-        margin-bottom: 1rem;
-        font-size: 2.44rem;
-    }
-
-    h3 {
-        color: aqua;
-        margin-bottom: 1rem;
-        font-size: 1.59rem;
-    }
-
-    p {
-        color: #086375;
-        margin-bottom: 2rem;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 25px;
-    }
-
     @media (min-width: 992px) {
     max-width: 1200px;
 

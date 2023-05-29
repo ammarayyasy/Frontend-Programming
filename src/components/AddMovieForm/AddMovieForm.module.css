@@ -13,29 +13,12 @@
     display: none;
   }
   
-  .form__image {
-    max-width: 100%;
-    border-radius: 25px;
-    height: auto;
-  }
-  
-  .form__title {
-    text-align: center;
-    color: #086375;
-    font-size: 2.44rem;
-    margin-bottom: 1rem;
-  }
-  
   .form__group {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
   }
-  
-  .form__label {
-    margin-bottom: 1rem;
-  }
-  
+
   .form__input {
     outline: none;
     padding: 1rem 0.5rem;
@@ -43,7 +26,7 @@
     border: 1px solid #64748b;
   }
   
-  .form__input:focus {
+  Input:focus {
     border: 1px solid #086375;
   }
   

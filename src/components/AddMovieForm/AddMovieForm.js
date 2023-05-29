@@ -3,6 +3,10 @@ import { useState } from "react";
 import Alert from "../Alert/Alert";
 import styles from "./AddMovieForm.module.css";
 import Button from "../ui/Button/Button";
+import Image from "../ui/Image/Image";
+import Heading from "../ui/Heading/Heading";
+import Label from "../ui/Label/Label";
+import Input from "../ui/Input/Input";
 
 // Menangkap props
 function AddMovieForm(props) {
@@ -99,15 +103,13 @@ function AddMovieForm(props) {
     <div className={styles.container}>
       <section className={styles.form}>
         <div className={styles.form__left}>
-          <img className={styles.form__image} src="https://picsum.photos/536/354" alt="" />
+          <Image src="https://picsum.photos/536/354" alt="" /> 
         </div>
         <div className={styles.form__right}>
-          <h2 className={styles.form__title}>Add Movie Form</h2>
+          <Heading size="md" color="webku" mb="1" center>Add Movie Form</Heading>
           <form onSubmit={handleSubmit}>
             <div className={styles.form__group}>
-              <label htmlFor="title" className={styles.form__label}>
-                Title
-              </label>
+              <Label htmlFor="title" mb="1">Title</Label>
               <input
                 id="title"
                 className={styles.form__input}
@@ -125,9 +127,7 @@ function AddMovieForm(props) {
               {isTitleError && <Alert>*Title Wajib Diisi</Alert>}
             </div>
             <div className={styles.form__group}>
-              <label htmlFor="year" className={styles.form__label}>
-                Year
-              </label>
+            <Label htmlFor="year" mb="1">Year</Label>
               <input
                 id="year"
                 className={styles.form__input}
@@ -146,9 +146,7 @@ function AddMovieForm(props) {
             </div>
 
             <div className={styles.form__group}>
-              <label className={styles.form__label} htmlFor="type">
-                Genre Movies:
-              </label>
+            <Label htmlFor="type" mb="1">Genre</Label>
               <select className={styles.form__input} id="type" name="type" onChange={handleChange} value={type}>
                 <option value="">Pilih genre</option>
                 <option value="drama">Drama</option>
@@ -165,9 +163,7 @@ function AddMovieForm(props) {
             </div>
 
             <div className={styles.form__group}>
-              <label htmlFor="poster" className={styles.form__label}>
-                Link Poster
-              </label>
+            <Label htmlFor="title" mb="1">Link Poster</Label>
               <input
                 id="poster"
                 className={styles.form__input}
