@@ -5,38 +5,50 @@ import HeroStyled from "./Hero.styled";
 import Heading from "../ui/Heading/Heading";
 import Paragraph from "../ui/Paragraph/Paragraph";
 import Image from "../ui/Image/Image";
+import axios from "axios";
 
 function Hero() {
   // membuat state movie
   const [movie, setMovie] = useState("");
-
-  async function fetchMovie() {
-    const url = "https://www.omdbapi.com/?apikey=fcf50ae6&i=tt2975590";
-    // Melakukan Fetch data dari API omdb.
-    const response = await fetch(url);
-    const data = await response.json();
-
-    // Update state movie dengan data movie (hasil fetch)
-    setMovie(data);
-  }
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  const genres = movie && movie.genres.map((genre) => genre.name).join(", ");
+  const trailer = movie && `https://www.youtube.com/watch?v=${movie.videos.results[0].key}`;
 
   useEffect(() => {
-    fetchMovie();
+    getDetailMovie();
   }, []);
+  
+  // mendapatkan 1 data dari trending movies
+  async function getTrendingMovies() {
+    const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
+    const response = await axios(URL);
+    // console.log(response.data.results[0]);
+    return response.data.results[0];
+  }
 
-  // Tampilkan state movie.
-  console.log(movie);
+  // mendapatkan detail movie
+  async function getDetailMovie() {
+    const trendingMovie = await getTrendingMovies();
+    const id = trendingMovie.id;
+
+    // fetch detail movie by id
+    const URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos`;
+    const response = await axios(URL);
+
+    setMovie(response.data)
+  }
+
   return (
     <HeroStyled>
       <section>
         <div className="hero__left">
-          <Heading size="md" color="webku" mb="2">{movie.Title}</Heading>
-          <Heading color="info">Genre: {movie.Genre}</Heading>
-          <Paragraph color="webku" mb="2">{movie.Plot}</Paragraph>
-          <Button variant="webku" size="lg">Watch</Button>
+          <Heading size="md" color="webku" mb="2">{movie.title}</Heading>
+          <Heading color="info">Genre: {genres}</Heading>
+          <Paragraph color="webku" mb="2">{movie.overview}</Paragraph>
+          <Button as="a" href={trailer} target="_blank" variant="webku" size="lg">Watch</Button>
         </div>
         <div className="hero__right">
-          <Image src="https://picsum.photos/536/354" alt={movie.Title}/>
+          <Image src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt={movie.Title}/>
         </div>
       </section>
     </HeroStyled>

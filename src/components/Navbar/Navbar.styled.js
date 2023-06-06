@@ -17,11 +17,6 @@ const NavbarStyled = styled.div`
         margin-bottom: 1rem;
     }
 
-    a {
-        text-decoration: none;
-        color: #fff; 
-    }
-
     @media (min-width: 768px) {
     nav {
         display: flex;

@@ -6,15 +6,9 @@ import Button from "../ui/Button/Button";
 import Image from "../ui/Image/Image";
 import Heading from "../ui/Heading/Heading";
 import Label from "../ui/Label/Label";
-import Input from "../ui/Input/Input";
 
 // Menangkap props
 function AddMovieForm(props) {
-  /**
-   * Ini hanya snippet(potongan) code.
-   * Kode yang lainnya tetap sama.
-   */
-
   // Destructing props: state movies
   const { movies, setMovies } = props;
 
@@ -35,19 +29,13 @@ function AddMovieForm(props) {
     })
   }
 
+  // object errors
   const [formErrors, setFormErrors] = useState({
     isTitleError: false,
     isYearError: false,
     isTypeError: false,
     isPosterError: false
   });
-
-  function handleError(input, boolean) {
-    setFormErrors({
-      ...formErrors,
-      [input]: boolean,
-    })
-  }
 
   // destructing data
   const {title, year, type, poster} = formData;
@@ -56,21 +44,39 @@ function AddMovieForm(props) {
   function validate(){
     // Jika title kosong, set isTitleError true
     if (title === "") {
-      handleError("isTitleError", "true");
+      setFormErrors({...formErrors, isTitleError: true});
     }
     // Jika year kosong, set isYearError true
     else if (year === "") {
-      handleError("isYearError", "true");
+      setFormErrors({...formErrors, 
+        isYearError: true, 
+        isTitleError: false
+      });
+      return false;
     }
     // Jika year kosong, set isYearError true
     else if (type === "") {
-      handleError("isTypeError", "true");
+      setFormErrors({...formErrors, 
+        isTypeError: true, 
+        isYearError: false
+      });
+      return false;
     }
     // Jika year kosong, set isYearError true
     else if (poster === "") {
-      handleError("isPosterError", "true");
+      setFormErrors({...formErrors, 
+        isPosterError: true, 
+        isTypeError: false
+      });
+      return false;
     }
     else {
+      setFormErrors({...formErrors,
+        isTitleError: false, 
+        isDateError: false, 
+        isPosterError: false, 
+        isTypeError: false
+      });
       return true;
     }
   }
@@ -90,12 +96,8 @@ function AddMovieForm(props) {
   }
 
   function handleSubmit(e) {
-    /**
-     * Mencegah perilaku default form.
-     * Mencegah form direfresh ketika disubmit.
-     */
     e.preventDefault();
-    
+
     validate() && addMovie();
   }
 
@@ -124,7 +126,7 @@ function AddMovieForm(props) {
                * Menambahkan infline if: operator &&
                * Jika isTitleError true maka render error
                */}
-              {isTitleError && <Alert>*Title Wajib Diisi</Alert>}
+              {isTitleError && <Alert>Title Wajib Diisi</Alert>}
             </div>
             <div className={styles.form__group}>
             <Label htmlFor="year" mb="1">Year</Label>
@@ -142,7 +144,7 @@ function AddMovieForm(props) {
                * Menambahkan infline if: operator &&
                * Jika isYearError true maka render error
                */}
-              {isYearError && <Alert>*Year Wajib Diisi</Alert>}
+              {isYearError && <Alert>Year Wajib Diisi</Alert>}
             </div>
 
             <div className={styles.form__group}>
@@ -159,7 +161,7 @@ function AddMovieForm(props) {
                * Menambahkan infline if: operator &&
                * Jika isTypeError true maka render error
                */}
-              {isTypeError && <Alert>*Type Wajib Dipilih</Alert>}
+              {isTypeError && <Alert>Type Wajib Dipilih</Alert>}
             </div>
 
             <div className={styles.form__group}>
@@ -178,7 +180,7 @@ function AddMovieForm(props) {
                * Menambahkan infline if: operator &&
                * Jika isPosterError true maka render error
                */}
-              {isPosterError && <Alert>*Link Poster Wajib Diisi</Alert>}
+              {isPosterError && <Alert>Link Poster Wajib Diisi</Alert>}
             </div>
 
             <div>

@@ -24,7 +24,7 @@ function Movies(props) {
   return (
     <div className={styles.container}>
       <section className={styles.movies}>
-        <Heading size="md" color="webku" mb="2">Latest Movies</Heading>
+        <Heading size="md" color="webku" mb="2">{props.title}</Heading>
         <div className={styles.movie__container}>
           {movies.map((movie) => {
             return <Movie key={movie.id} movie={movie} />;
