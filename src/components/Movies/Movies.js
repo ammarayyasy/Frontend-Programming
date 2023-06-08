@@ -7,7 +7,7 @@ import { nanoid } from "nanoid";
 
 function Movies(props) {
   // destructing data props
-  const { movies, setMovies } = props;
+  const { title, movies, setMovies } = props;
 
   function handleClick() {
     const movie = {
@@ -24,7 +24,7 @@ function Movies(props) {
   return (
     <div className={styles.container}>
       <section className={styles.movies}>
-        <Heading size="md" color="webku" mb="2">{props.title}</Heading>
+        <Heading size="md" color="webku" mb="2">{title}</Heading>
         <div className={styles.movie__container}>
           {movies.map((movie) => {
             return <Movie key={movie.id} movie={movie} />;
