@@ -30,7 +30,7 @@ function DetailMovie() {
           <Heading size="lg" mb="4" center>Detail movie</Heading>
           <section>
             <div className="hero__left">
-                <Image src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={movie.title}/>   
+                <Image src={movie.poster_path ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}` : "https://picsum.photos/300/450"} alt={movie.title}/>   
             </div>
             <div className="hero__right">
                 <Heading size="md" color="webku">{movie.title}</Heading>

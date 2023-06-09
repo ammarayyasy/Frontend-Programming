@@ -10,7 +10,7 @@ function Movie(props) {
 
     return (
         <StyledMovie>
-            <Image src={movie.poster || `https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={movie.title}/>
+            <Image src={movie.poster || (movie.poster_path ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}` : "https://picsum.photos/300/450")} alt={movie.title}/>
             <Link to={`/movie/${movie.id}`}>
                 <Heading>{movie.title}</Heading>
             </Link>
